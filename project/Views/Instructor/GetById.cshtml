@@ -1,0 +1,81 @@
+﻿@* @model Instructor *@
+@* @{ *@
+@*     ViewData["Title"] = "GetById"; *@
+@* } *@
+
+@* <div class="card" style="width:400px"> *@
+@*     <img class="card-img-top" src="/images/@Model.Image" alt="Card image"> *@
+@*     <div class="card-body"> *@
+@*         <h4 class="card-title">@Model.Id</h4> *@
+@*         <h4 class="card-title">@Model.Name</h4> *@
+@*         <p class="card-text">@Model.Address</p> *@
+@*         <p class="card-text">@Model.Salary</p> *@
+@*         <p class="card-text">@Model.Department.Name</p> *@
+@*         <p class="card-text">@Model.Course.Name</p> *@
+@*         <a class="btn btn-primary" href="/Instructor/Index" >Go back</a> *@
+        
+@*     </div> *@
+@* </div> *@
+
+@model Instructor
+@{
+    ViewData["Title"] = "Instructor Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Instructor Profile</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="/images/@Model.Image"
+                                 class="img-fluid rounded-circle mb-3"
+                                 style="width: 150px; height: 150px; object-fit: cover"
+                                 alt="@Model.Name">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <h3 class="card-title">@Model.Name</h3>
+                                <span class="badge bg-secondary">ID: @Model.Id</span>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Address:</strong> @Model.Address
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Salary:</strong> @Model.Salary.ToString("C")
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Department:</strong> @Model.Department?.Name
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Course:</strong> @Model.Course?.Name
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Back to List
+                        </a>
+                        <div>
+                            @* <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2"> *@
+                            @*     <i class="bi bi-pencil"></i> Edit *@
+                            @* </a> *@
+                            @* <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger"> *@
+                            @*     <i class="bi bi-trash"></i> Delete *@
+                            @* </a> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model CrsResult_Course_Trainee_ViewModel
+@{
+    ViewData["Title"] = "Result";
+}
+
+
+
+<div class="card shadow-lg" style="width: 24rem; border-left: 5px solid @Model.Color; border-radius: 0.5rem;">
+    <div class="card-header bg-light">
+        <h5 class="card-title mb-0 text-center">Course Results</h5>
+    </div>
+    <div class="text-center p-3">
+        <img class="card-img-top rounded-circle"
+             src="/images/@Model.Tr_Image"
+             alt="Trainee Image"
+             style="width: 150px; height: 150px; object-fit: cover; border: 3px solid @Model.Color;">
+    </div>
+    <div class="card-body">
+        <h4 class="card-title text-center mb-4">
+            <span class="badge bg-secondary">@Model.Tr_Grade</span>
+            @Model.Tr_Name
+        </h4>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold">Course:</span>
+            <span>@Model.Crs_Name</span>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold">Minimum Required:</span>
+            <span>@Model.Crs_MinDegree</span>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="fw-bold">Your Score:</span>
+            <span class="badge bg-@(Model.Color == "green" ? "success" : "danger") fs-6">
+                @Model.Crs_Result_Degree
+            </span>
+        </div>
+
+     
+</div>

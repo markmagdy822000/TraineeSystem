@@ -1,0 +1,6 @@
+.vs/*
+images/*
+project/wwwroot/*
+project/bin/*
+project/obj/*
+project/project.csproj.user

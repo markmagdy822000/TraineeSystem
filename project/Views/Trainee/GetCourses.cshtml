@@ -1,0 +1,41 @@
+﻿@model List<CrsResult_Course_Trainee_ViewModel>
+
+<div class="container mt-4">
+    <!-- Student Header -->
+    <div class="text-center mb-4">
+        <img src="/images/@Model.FirstOrDefault()?.Tr_Image"
+             class="rounded-circle border border-3"
+             style="width: 80px; height: 80px; object-fit: cover"
+             alt="Student">
+        <h3 class="mt-2">@Model[0].Tr_Name</h3>
+        <span class="badge bg-secondary">Grade: @Model.FirstOrDefault()?.Tr_Grade</span>
+    </div>
+
+    <!-- Courses List -->
+    <div class="list-group">
+        @foreach (var course in Model)
+        {
+            <div class="list-group-item list-group-item-action @(course.Color == "red" ? "list-group-item-danger" : "list-group-item-success")">
+                <div class="d-flex justify-content-between">
+                    <strong>@course.Crs_Name</strong>
+                    <span class="badge bg-@course.Color">
+                        @course.Crs_Result_Degree/@course.Crs_MinDegree
+                    </span>
+                </div>
+                <small class="text-muted">@(course.Color == "red" ? "Failed" : "Passed")</small>
+            </div>
+        }
+    </div>
+
+    <!-- Summary -->
+    <div class="mt-3 p-3 bg-light rounded">
+        <p>
+            Passed: <strong>@Model.Count(c => c.Color == "green")</strong> |
+            Failed: <strong>@Model.Count(c => c.Color == "red")</strong> |
+            Total: <strong>@Model.Count</strong>
+        </p>
+    </div>
+    <div>
+        <a class="btn btn-primary" onclick="history.back()"> Go Back</a>
+    </div>
+</div>

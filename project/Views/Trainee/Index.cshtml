@@ -1,0 +1,36 @@
+﻿@model List<Trainee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container my-5">
+    <!-- Trainee Title -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold"> Trainees</h1>
+    </div>
+
+    <!--  Cards -->
+    <div class="row g-4">
+        @foreach (var trainee in @Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="/images/@trainee.Image"
+                             class="rounded-circle me-3 border border-2"
+                             style="width: 70px; height: 70px; object-fit: cover;"
+                             alt="@trainee.Name" />
+
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1">@trainee.Name</h5>
+                            
+                        </div>
+                    </div>
+                    <a class="btn btn-primary " asp-controller="Trainee" asp-action="GetCourses" asp-route-tid="@trainee.Id">View</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+

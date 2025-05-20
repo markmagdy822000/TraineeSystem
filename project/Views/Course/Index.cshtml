@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* ---------- *@
+
+
+
+@model List<Course>  
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Courses</h1>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Add New Course
+        </a>
+    </div>
+
+    <div class="row">
+        @foreach (var course in @Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    
+                    <div class="card-body">
+                        <p class="card-text text-muted">@course.Name</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Full Degree: @course.Degree</span>
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-between">
+                        <a asp-action="GetAllTrainees" asp-route-cid="@course.Id"  class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye"></i> View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+     @if (!@Model.Any()) 
+     { 
+         <div class="alert alert-info mt-4"> 
+             <i class="bi bi-info-circle"></i> No courses found. Would you like to add one? 
+         </div> 
+     } 
+</div>
+

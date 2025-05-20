@@ -1,0 +1,53 @@
+﻿@model List<CrsResult_Course_Trainee_ViewModel>
+
+@{
+    ViewData["Title"] = "Course Trainees";
+    var courseName = Model.FirstOrDefault()?.Crs_Name ?? "Course";
+}
+
+<div class="container my-5">
+    <!-- Course Title -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">@courseName Trainees</h2>
+    </div>
+
+    <!-- Trainee Cards -->
+    <div class="row g-4">
+        @foreach (var trainee in Model)
+        {
+            var isPassed = trainee.Color == "green";
+            var statusText = isPassed ? "Passed" : "Failed";
+            var statusClass = isPassed ? "success" : "danger";
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body d-flex align-items-center">
+                        <img src="/images/@trainee.Tr_Image"
+                             class="rounded-circle me-3 border border-2"
+                             style="width: 70px; height: 70px; object-fit: cover;"
+                             alt="@trainee.Tr_Name" />
+
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1">@trainee.Tr_Name</h5>
+                            <span class="badge bg-@statusClass">@trainee.Crs_Result_Degree / @trainee.Crs_MinDegree</span>
+                            <p class="text-muted mb-0 small">@statusText</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div>
+            <a class="btn btn-primary" onclick="history.back()"> Go Back</a>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="mt-5 p-4 bg-light rounded shadow-sm text-center">
+        <h6 class="mb-3">Summary</h6>
+        <p class="mb-0">
+            ✅ <strong>Passed:</strong> @Model.Count(c => c.Color == "green") &nbsp;&nbsp;
+            ❌ <strong>Failed:</strong> @Model.Count(c => c.Color == "red") &nbsp;&nbsp;
+            📋 <strong>Total:</strong> @Model.Count
+        </p>
+    </div>
+</div>

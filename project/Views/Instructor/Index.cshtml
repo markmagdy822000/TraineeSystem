@@ -1,0 +1,53 @@
+﻿@model List<Instructor>
+@{
+    ViewData["Title"] = "Instructors";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6">Instructors</h1>
+        <a asp-action="Create" class="btn btn-success">Add New Instructor</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Salary</th>
+                    <th>Address</th>
+                    <th>Course</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var instructor in Model)
+                {
+                    <tr>
+                        <td>@instructor.Id</td>
+                        <td>@instructor.Name</td>
+                        <td>
+                            <img src="~/images/@instructor.Image"
+                                 class="rounded-circle"
+                                 style="width: 50px; height: 50px; object-fit: cover"
+                                 alt="@instructor.Name" />
+                        </td>
+                        <td>@instructor.Salary.ToString("C")</td>
+                        <td>@instructor.Address</td>
+                        <td>@instructor.Course?.Name</td>
+                        <td>@instructor.Department?.Name</td>
+                        <td>
+                            <a asp-action="GetById" asp-route-id="@instructor.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
