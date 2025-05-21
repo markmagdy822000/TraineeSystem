@@ -76,24 +76,21 @@ namespace project.Controllers
         [HttpPost]
         public IActionResult Edit(Instructor_Course_Deprtment_ViewModel insForm)
         {
-            Instructor ins = db.Instructors.Where(i=>i.Id == insForm.Id).FirstOrDefault();
+            Instructor ins = db.Instructors.Where(i => i.Id == insForm.Id).FirstOrDefault();
             if (ins?.Address == null || ins?.Name == null)
                 return View("Edit", ins);
 
-            ins.Id  = insForm.Id;
+            ins.Id = insForm.Id;
             ins.Name = insForm.Name;
             ins.Salary = insForm.Salary;
             ins.CrsId = insForm.CrsId;
-            ins.Address=insForm.Address;
+            ins.Address = insForm.Address;
             ins.Image = insForm.Image;
             ins.DepartmentId = insForm.DepartmentId;
 
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        
-        
         public IActionResult Delete(int id) {
             Instructor ins = db.Instructors.Where(i=>i.Id == id).SingleOrDefault();
             ins.isDeleted = true;

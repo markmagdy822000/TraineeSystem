@@ -11,6 +11,7 @@
 
     <!--  Cards -->
     <div class="row g-4">
+        <a class="btn btn-primary" asp-action="Add">Add New Trainee</a>
         @foreach (var trainee in @Model)
         {
             <div class="col-md-6 col-lg-4">
@@ -24,6 +25,10 @@
                         <div class="flex-grow-1">
                             <h5 class="mb-1">@trainee.Name</h5>
                             
+                        </div>
+                        <div>
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@trainee.Id">Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@trainee.Id">Delete</a>
                         </div>
                     </div>
                     <a class="btn btn-primary " asp-controller="Trainee" asp-action="GetCourses" asp-route-tid="@trainee.Id">View</a>

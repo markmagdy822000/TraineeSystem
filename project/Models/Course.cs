@@ -16,7 +16,5 @@ namespace project.Models
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
         public bool isDeleted { get; set; }
-
-
     }
 }

@@ -13,17 +13,18 @@
 
     <!-- Courses List -->
     <div class="list-group">
-        @foreach (var course in Model)
-        {
-            <div class="list-group-item list-group-item-action @(course.Color == "red" ? "list-group-item-danger" : "list-group-item-success")">
-                <div class="d-flex justify-content-between">
-                    <strong>@course.Crs_Name</strong>
-                    <span class="badge bg-@course.Color">
-                        @course.Crs_Result_Degree/@course.Crs_MinDegree
-                    </span>
+        
+            @foreach (var course in Model)
+            {
+                <div class="list-group-item list-group-item-action @(course.Color == "red" ? "list-group-item-danger" : "list-group-item-success")">
+                    <div class="d-flex justify-content-between">
+                        <strong>@course.Crs_Name</strong>
+                        <span class="badge bg-@course.Color">
+                            @course.Crs_Result_Degree/@course.Crs_MinDegree
+                        </span>
+                    </div>
+                    <small class="text-muted">@(course.Color == "red" ? "Failed" : "Passed")</small>
                 </div>
-                <small class="text-muted">@(course.Color == "red" ? "Failed" : "Passed")</small>
-            </div>
         }
     </div>
 

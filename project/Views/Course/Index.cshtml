@@ -3,16 +3,13 @@
     ViewData["Title"] = "Index";
 }
 
-@* ---------- *@
-
-
 
 @model List<Course>  
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Courses</h1>
-        <a asp-action="Create" class="btn btn-primary">
+        <a asp-action="Add" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Add New Course
         </a>
     </div>
@@ -34,6 +31,8 @@
                         <a asp-action="GetAllTrainees" asp-route-cid="@course.Id"  class="btn btn-sm btn-outline-primary">
                             <i class="bi bi-eye"></i> View
                         </a>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@course.Id">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
                     </div>
                 </div>
             </div>
