@@ -1,0 +1,50 @@
+﻿@model Trainee_Department_ViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+
+<form action="/Trainee/SaveEdit">
+    <input hidden id="Id" name="Id" value="@Model.Id" />
+
+    <div>
+        <label>Name</label>
+        <input class="form form-control" id="Name" name="Name" value="@Model.Name" />
+    </div>
+
+    <div>
+        <label>Grade</label>
+        <input type="number" class="form form-control" id="Grade" name="Grade" value="@Model.Grade" />
+    </div>
+
+    <div>
+        <label>Image</label>
+        <input type="file" class="form form-control" id="Image" name="Image" value="@Model.Image" />
+    </div>
+
+    <div>
+        <label>Address</label>
+        <input id="Address" class="form form-control" name="Address" value="@Model.Address" />
+    </div>
+
+    <div>
+        <select class="form form-control" name="DepartmentId" id="DepartmentId">
+            @foreach (var item in @Model.Departments)
+            {
+                if (@Model.DepartmentId == item.Id)
+                {
+                    <option selected value="@item.Id">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            
+            }
+            
+            </select>
+    </div>
+    <input type="submit" value="Save" />
+</form>

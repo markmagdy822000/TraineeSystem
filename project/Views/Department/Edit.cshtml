@@ -1,0 +1,24 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form action="/Department/SaveEdit" method="post">
+
+    <input hidden type="text" name="Id" value="@Model.Id" class="form form-control" />
+
+    <div>
+        <label>Department Name</label>
+        <input type="text" name="Name" value="@Model.Name" class="form form-control" />
+    </div>
+    <div>
+        <label>Manager Name</label>
+        <input type="text" name="ManagerName" value="@Model?.ManagerName" class="form form-control" />
+    </div>
+    <br />
+    <input type="submit" value="Save" class="btn btn-success"  />
+</form>
+
+<a class="btn btn-primary" asp-action="Index" > Go Back</a>

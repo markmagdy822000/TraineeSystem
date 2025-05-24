@@ -1,0 +1,47 @@
+﻿@model Course_Deparmtent_ViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form action="/Course/SaveEdit" class="form-responsive" >
+    <input hidden type="text" class="form form-control" name="Id" id="@Model.Id" value="@Model.Id" />
+
+    <div>
+        <label>Name</label>
+        <input type="text" class="form form-control" name="Name" id="Name" Name value="@Model.Name" />
+    </div>
+
+    <div>
+        <label>Degree</label>
+        <input type="number" class="form form-control" name="Degree" id="Degree" value="@Model.Degree" />
+    </div>
+
+    <div>
+        <label>MinDegree</label>
+        <input type="number" class="form form-control" name="MinDegree" id="MinDegree" value="@Model.MinDegree" />
+    </div>
+
+    <div>
+        <label>Hours</label>
+        <input type="number" class="form form-control" name="Hours" id="Hours" value="@Model.Hours" />
+    </div>
+
+    <div>
+        <select id="DepartmentId" name="DepartmentId">
+            @foreach (var item in Model.Departments)
+            {
+                if(item.Id == @Model.DepartmentId)
+                {
+                    <option selected value="@item.Id">@item.Name</option>
+                }
+                else {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <input  type="submit" value="Save" class="btn btn-success"/> 
+</form>

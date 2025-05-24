@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EduConnect</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --accent: #e74c3c;
+        }
+
+        .navbar {
+            background-color: var(--primary) !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--light) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('/images/education-bg.jpg');
+            background-size: cover;
+            color: white;
+            padding: 5rem 0;
+        }
+
+        .feature-card {
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-page="/Index">EduConnect</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Courses/Index">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Departments/Index">Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Instructors/Index">Instructors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Trainees/Index">Trainees</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid p-0">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            &copy; @DateTime.Now.Year - EduConnect - <a asp-page="/Privacy" class="text-light">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

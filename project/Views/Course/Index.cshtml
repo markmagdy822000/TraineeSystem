@@ -1,10 +1,11 @@
-﻿
+﻿@model List<Course>
+
 @{
     ViewData["Title"] = "Index";
+    // Layout = "_AdvLayout";
 }
 
 
-@model List<Course>  
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -12,6 +13,10 @@
         <a asp-action="Add" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Add New Course
         </a>
+        <form asp-action="Index" asp-controller="Course" method="post" class="form-responsive">
+            <input class="form-check form-control" name="searchTxt" /> 
+            <input type="submit" class="btn btn-light"value="Search"/>
+        </form>
     </div>
 
     <div class="row">
@@ -32,7 +37,9 @@
                             <i class="bi bi-eye"></i> View
                         </a>
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@course.Id">Edit</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+                        <form asp-action="Delete" onsubmit="return confirm('Are you sure you want to delete?')" method="post" asp-route-Id="@course.Id">
+                            <input type="submit" class="btn btn-danger" value="Delete" />
+                        </form>
                     </div>
                 </div>
             </div>
@@ -45,5 +52,10 @@
              <i class="bi bi-info-circle"></i> No courses found. Would you like to add one? 
          </div> 
      } 
+
+     <div>
+        <a class="btn btn-primary" asp-action="Index" asp-route-isNext="1">Next</a>
+        <a class="btn btn-primary" asp-action="Index" asp-route-isNext="2">Prev</a>
+    </div>
 </div>
 

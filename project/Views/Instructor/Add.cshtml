@@ -1,0 +1,52 @@
+﻿@model Instructor_Course_Deprtment_ViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add New Instructor</h1>
+
+
+<form action="/Instructor/Add" method="post" class="form-responsive">
+        <div>
+            <label>Name</label>
+            <input type="text" class= "form form-control" id="Name" name="Name" value="@Model?.Name" />
+        </div>
+
+        <div>
+            <label>Image</label>
+        <input type="file" formControlName="image"  class="form form-control" id="Image" name="Image" value="@Model?.Image" />
+        </div>
+
+        <div>
+            <label>Salary</label>
+            <input type="number"class= "form form-control" id="Salary" name="Salary" value="@Model?.Salary" />
+        </div>
+
+        <div>
+            <label>Address</label>
+            <input type="text" class= "form form-control" id="Address" name="Address" value="@Model?.Address" />
+        </div>
+
+        <div>
+            <label>Department</label>
+        <select name="DepartmentId" class="form form-control" id="DepartmentId">
+                @foreach (var @item in @Model?.Departments)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <label>Cousres</label>
+        <select name="CrsId" class="form form-control" id="CrsId">
+                @foreach (var item in @Model?.Courses)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+      
+    <input type="submit" class="btn btn-success" value="Add Instructor"/>
+</form>
